@@ -41,6 +41,8 @@ setup(
     install_requires=[
         'setuptools',
         'Plone',
+        'imio.wsrequest.core',
+        'imio.wsresponse.core',
     ],
     extras_require={
         'test': [
