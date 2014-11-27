@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n_domain="imio.ws.poc">
+
+  <browser:viewlet
+    name="ws-viewlet"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+    template="templates/ws-viewlet.pt"
+    permission="zope2.View"
+    class=".viewlet.WSViewlet"
+    />
+
+  <browser:page
+    for="*"
+    name="ws_request"
+    class=".request.WSRequestView"
+    permission="zope.Public"
+    />
+
+  <browser:page
+    for="*"
+    name="ws_response"
+    class=".request.WSResponseView"
+    permission="zope.Public"
+    />
+
+</configure>

@@ -4,6 +4,10 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="imio.ws.poc">
 
-  <five:registerPackage package="." initialize=".initialize" />
+  <include package="Products.CMFPlone" />
+  <include package="imio.wsrequest.core" />
+  <include package="imio.wsresponse.core" />
+
+  <include package=".browser" />
 
 </configure>
