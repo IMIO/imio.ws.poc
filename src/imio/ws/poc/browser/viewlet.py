@@ -15,3 +15,13 @@ class WSRequestViewlet(base.ViewletBase):
     @property
     def url(self):
         return self.context.absolute_url()
+
+
+class WSResponseViewlet(base.ViewletBase):
+
+    def can_view(self):
+        return getattr(self.context, 'original_url', None) is not None
+
+    @property
+    def original_url(self):
+        return self.context.original_url

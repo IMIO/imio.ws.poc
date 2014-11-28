@@ -1,0 +1,3 @@
+<div tal:condition="view/can_view">
+  <a href="" tal:attributes="href view/original_url">original document</a>
+</div>

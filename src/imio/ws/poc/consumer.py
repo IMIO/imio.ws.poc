@@ -37,6 +37,7 @@ def consume_requests(message, event):
             title=content.parameters.get('title'),
             **content.parameters.get('values')
         )
+    obj.original_url = content.parameters.get('original_url')
     publisher.setup_queue(content.uid, content.uid)
     response = Response(
         content.uid,

@@ -5,11 +5,19 @@
     i18n_domain="imio.ws.poc">
 
   <browser:viewlet
-    name="ws-viewlet"
+    name="ws-request-viewlet"
     manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
     template="templates/ws-request-viewlet.pt"
     permission="zope2.View"
     class=".viewlet.WSRequestViewlet"
+    />
+
+  <browser:viewlet
+    name="ws-response-viewlet"
+    manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+    template="templates/ws-response-viewlet.pt"
+    permission="zope2.View"
+    class=".viewlet.WSResponseViewlet"
     />
 
   <browser:page

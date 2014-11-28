@@ -23,6 +23,7 @@ class WSRequestView(BrowserView):
             'type': self.context.portal_type,
             'title': self.context.Title(),
             'external_uid': self.context.external_uid,
+            'original_url': self.context.absolute_url(),
             'values': {
                 'description': self.context.Description(),
                 'text': self.context.getText(),
