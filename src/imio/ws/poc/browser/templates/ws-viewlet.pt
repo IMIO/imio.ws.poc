@@ -7,7 +7,6 @@
       $.ajax({
         url: $(this).attr('href'),
         success: function(data) {
-          console.log(data);
           if(data.error != null || data.success == false) {
             set_error(obj);
           } else {
@@ -28,12 +27,12 @@
 
     check_result = function(obj, id) {
       $.ajax({
-        url: 'ws_response?id=' + id,
+        url: $(location).attr('href') + '/ws_response?id=' + id,
         success: function(data) {
           if(data.success == false && data.error == null) {
             setTimeout(check_result, 2000, obj, id);
           } else if(data.success == true) {
-            obj.html('Object created !');
+            obj.html('Object synced !');
           } else {
             set_error(obj);
           }
