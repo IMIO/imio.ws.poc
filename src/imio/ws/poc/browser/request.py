@@ -22,6 +22,7 @@ class WSRequestView(BrowserView):
         return {
             'type': self.context.portal_type,
             'title': self.context.Title(),
+            'external_uid': self.context.external_uid,
             'values': {
                 'description': self.context.Description(),
                 'text': self.context.getText(),
@@ -64,6 +65,8 @@ class WSResponseView(BrowserView):
         try:
             self.success, response = request.do_request()
             self.url = response.get('url', None)
+            if response.get('external_uid'):
+                self.context.external_uid = response.get('external_uid')
         except RequestException, e:
             self.error = e.message
         return self.render()

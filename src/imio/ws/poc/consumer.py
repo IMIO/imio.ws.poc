@@ -31,7 +31,7 @@ def consume_requests(message, event):
     publisher.setup_queue(content.uid, content.uid)
     response = Response(
         content.uid,
-        content_uid=obj.UID(),
+        external_uid=obj.UID(),
         url=obj.absolute_url(),
     )
     publisher.add_message(response)
