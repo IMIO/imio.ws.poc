@@ -17,8 +17,19 @@ class WSRequestView(BrowserView):
             'id': self.id,
         })
 
+    @property
+    def content_dict(self):
+        return {
+            'type': self.context.portal_type,
+            'title': self.context.Title(),
+            'values': {
+                'description': self.context.Description(),
+                'text': self.context.getText(),
+            },
+        }
+
     def __call__(self):
-        request = Request('plone2', 'Plone', 'create', foo='bar')
+        request = Request('plone2', 'Plone', 'create', **self.content_dict)
         request.webservice = 'test_request'
         request.version = 0.1
 
