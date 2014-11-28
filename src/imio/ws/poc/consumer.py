@@ -22,12 +22,21 @@ def consume_requests(message, event):
     content = cPickle.loads(message.body)
     portal = getSite()
     publisher = ResponsePublisher()
-    obj = api.content.create(
-        container=portal,
-        type=content.parameters.get('type'),
-        title=content.parameters.get('title'),
-        **content.parameters.get('values')
-    )
+    uid = content.parameters.get('external_uid')
+    obj = uid and api.content.get(UID=uid) or None
+    if obj is not None:
+        obj.setTitle(content.parameters.get('title'))
+        for key, value in content.parameters.get('values').items():
+            me = getattr(obj, 'set%s' % key.capitalize(), None)
+            if me:
+                me(value)
+    else:
+        obj = api.content.create(
+            container=portal,
+            type=content.parameters.get('type'),
+            title=content.parameters.get('title'),
+            **content.parameters.get('values')
+        )
     publisher.setup_queue(content.uid, content.uid)
     response = Response(
         content.uid,
