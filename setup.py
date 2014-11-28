@@ -41,6 +41,8 @@ setup(
     install_requires=[
         'setuptools',
         'Plone',
+        'plone.api',
+        'imio.amqp',
         'imio.wsrequest.core',
         'imio.wsresponse.core',
     ],
