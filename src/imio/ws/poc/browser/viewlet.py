@@ -3,7 +3,7 @@
 from plone.app.layout.viewlets import common as base
 
 
-class WSViewlet(base.ViewletBase):
+class WSRequestViewlet(base.ViewletBase):
 
     def can_view(self):
         return getattr(self.context, 'original_url', None) is None
