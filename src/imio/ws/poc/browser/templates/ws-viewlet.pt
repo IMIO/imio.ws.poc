@@ -1,3 +1,4 @@
+<tal:if condition="view/can_view">
 <script type="text/javascript">
   jQuery(function($) {
 
@@ -47,10 +48,14 @@
 </script>
 
 
-<div tal:condition="not: view/published">
-  <a href="#" tal:attributes="href string: ${view/url}/ws_request" id="ws-request">Publish on external website</a>
+<div tal:condition="not: view/sended">
+  <a href="#" tal:attributes="href string: ${view/url}/ws_request" id="ws-request">Send on external website</a>
 </div>
 
-<fieldset tal:condition="view/published">
-  <p>This document was published on an external website</p>
-</fieldset>
+<div tal:condition="view/sended">
+  <p>
+    This document was sended on an external website
+    <a href="#" tal:attributes="href string: ${view/url}/ws_request" id="ws-request">Update on external website</a>
+  </p>
+</div>
+</tal:if>
