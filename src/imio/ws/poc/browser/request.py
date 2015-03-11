@@ -10,8 +10,9 @@ class WSRequestView(WSRequestBaseView):
     plone_id = 'plone2'
     application_id = 'Plone'
     request_type = 'create'
+    type_version = '0.1'
 
-    render_extra_values = {
+    json_extra_values = {
         'id': None,
     }
 
@@ -31,6 +32,6 @@ class WSRequestView(WSRequestBaseView):
 
 class WSResponseView(WSResponseBaseView):
 
-    render_extra_values = {
+    json_extra_values = {
         'url': None,
     }
